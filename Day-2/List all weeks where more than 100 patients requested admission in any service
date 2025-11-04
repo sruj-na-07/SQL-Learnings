@@ -1,0 +1,5 @@
+SELECT week,
+       COUNT(patients_request)
+FROM services_weekly
+GROUP BY week
+HAVING COUNT(patients_request) > 100;
