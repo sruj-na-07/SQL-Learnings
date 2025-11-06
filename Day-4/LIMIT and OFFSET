@@ -1,0 +1,5 @@
+SELECT patient_id, name, service, satisfaction
+FROM Patients
+ORDER BY satisfaction DESC
+OFFSET 2 ROWS
+FETCH NEXT 5 ROWS ONLY;
