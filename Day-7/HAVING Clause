@@ -1,0 +1,7 @@
+SELECT service,
+SUM(patients_refused) AS total_refused,
+ROUND(avg(patient_satisfaction),2) AS avg_satisfaction
+FROM services_weekly
+GROUP BY service
+HAVING total_refused > 100
+AND avg(patient_satisfaction) < 80;
