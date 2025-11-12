@@ -1,0 +1,7 @@
+SELECT service,
+COUNT(*) AS patient_count,
+AVG(DATEDIFF(departure_date, arrival_date)) AS avg_len_of_stay
+FROM patients
+GROUP BY service
+HAVING avg_len_of_stay > 7
+ORDER BY avg_len_of_stay DESC;
