@@ -1,0 +1,5 @@
+SELECT DISTINCT service, event, COUNT(*) AS combination
+FROM services_weekly
+WHERE event IS NOT NULL and event!='none'
+GROUP BY service, event
+ORDER BY combination DESC;
