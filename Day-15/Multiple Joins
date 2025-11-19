@@ -1,0 +1,9 @@
+SELECT sw.week, sw.service, SUM(sw.patients_admitted) AS total_patients, SUM(sw.patients_refused) AS total_patients_refused,
+ROUND(AVG(patient_satisfaction)) AS staff_assigned,
+SUM (COALESCE (ss.present, 0)) AS staff_present
+FROM services_weekly sw
+JOIN staff s ON sw.service = s.service
+JOIN staff_schedule ss ON s.staff_id = ss.staff_id AND ss.week = sw.week
+WHERE sw.week = 20
+GROUP BY sw.week, sw.service
+ORDER BY total_patients DESC;
