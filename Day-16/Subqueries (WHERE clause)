@@ -1,0 +1,10 @@
+SELECT patient_id, name, service, satisfaction
+FROM patients
+WHERE service IN (
+SELECT service
+FROM services_weekly
+GROUP BY service
+HAVING AVG(patient_satisfaction) < (
+SELECT AVG(patient_satisfaction)
+FROM services_weekly
+));
