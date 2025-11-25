@@ -1,0 +1,11 @@
+Select id,full_name,type,service
+FROM(
+SELECT patient_id as ID,name as full_name,'Patient' as type, service
+FROM patients
+WHERE service IN ('surgery','emergency')
+UNION ALL
+SELECT staff_id AS id, staff_name as full_name,'Staff' as type,service
+FROM staff
+WHERE service IN ('surgery','emergency')
+) combined
+ORDER BY type,service,full_name;
